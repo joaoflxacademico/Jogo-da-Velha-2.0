@@ -1,5 +1,5 @@
 const currentPlayer = document.querySelector(".currentPlayer");
-
+//criei a matriz que vai servir como base de posição do jogo,além disso criei o botão que atualiza de acordo com o indice e o jogadoe que esta a fazer a jogada
 const positions = [
   [1, 2, 3],
   [4, 5, 6],
