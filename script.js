@@ -48,7 +48,7 @@ const turno = (simbolo0,simbolo3,cont) =>{ /**  Função que irá utilizar da re
     const num2 = Math.floor(Math.random()*3)
     return turno(simbolos(num1),simbolos(num2),cont=0)}//Retorno de uma nova rodada, após duas rodadas, com novos simbolos e o seu contador zerado.
     else{
-      return turno(simbolo0,simbolo4,cont+1/**função de rodada, ou função clique*/)
+      return turno(simbolo0,simbolo3,cont+1/**função de rodada, ou função clique*/)
     }
 }
 /*const simbolos = ["x", "$", "!", "?", "o", "%"]
