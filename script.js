@@ -1,3 +1,28 @@
+//cria uma matriz de 7por 7 que vai servir como base para o nosso jogo
+const criarMatriz = (linhas, colunas, geradorValorCélula) =>
+  Array.from({ length: linhas }, (_, i) =>
+    Array.from({ length: colunas }, (_, j) => geradorValorCélula(i, j))
+  )
+
+const imprimirMatriz = (matriz, índice = 0) => {
+  if (índice === matriz.length) return
+  console.log(matriz[índice].join('\t'))
+  imprimirMatriz(matriz, índice + 1)
+};
+
+const gerarMatrizDePosições = (linhas, colunas) =>
+  criarMatriz(linhas, colunas, (i, j) => [i, j])
+
+const linhas = 7
+const colunas = 7
+
+const matrizDePosições = gerarMatrizDePosições(linhas, colunas)
+
+imprimirMatriz(matrizDePosições)
+
+
+
+
 //Criação dos simbolos utilizados no jogo
 const simbolo1 = "x"
 const simbolo2 = "$"
