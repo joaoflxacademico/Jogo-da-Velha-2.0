@@ -51,3 +51,23 @@ const turno = (simbolo1,simbolo2,cont) =>{ /**  Função que irá utilizar da re
       return turno(simbolo1,simbolo2,cont/**função de rodada, ou função clique*/)
     }
 }
+/*const simbolos = ["x", "$", "!", "?", "o", "%"]
+
+const jogador = (contador) => {
+  if (contador === 2) {
+    const num1 = Math.floor(Math.random() * 3) + 1; // usa a função random para criar um numero ente 0 e 99999999999 e multiplica por uma valor x depois usa o float para transformar esse número em um inteiro ente x e y 
+ const num2 = (Math.floor(Math.random() * 3) + 4) % 6
+
+    console.log(`Jogador 1: ${simbolos[num1]}`)
+    console.log(`Jogador 2: ${simbolos[num2]}`)
+    return jogador(0); // Reinicia o jogo com novos símbolos
+  } else {
+    const jogadorAtual = contador % 2 === 0 ? "Jogador 1" : "Jogador 2"
+    const simbolo = simbolos[Math.floor(Math.random() * simbolos.length)] //define de forma aleatoria qual sera o simbolo do jogador
+    console.log(`${jogadorAtual}: ${simbolo}`)
+    return jogador(contador + 1) // Chama recursivamente para o próximo turno
+  }
+};
+
+// Inicia o jogo com o jogador 1
+jogador(0)*/ 
