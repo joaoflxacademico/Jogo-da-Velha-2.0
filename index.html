@@ -3,95 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="script.js"></script>
+    <!-- Utilizamos o atributo 'script' para relacionar o documento do JAVASCRIPT a página do HTML.  -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Utilizamos o atributo 'link' para relacionar o documento do CSS a página do HTML. -->
     <title>Document</title>
 </head>
 <!-- Criação da tabela que será a estrutura visual do jogo, 
-    utilizamos a criação de uma classe para permitir a modificação das celulas em conjunto -->
+    utilizamos a criação de uma classe para permitir a modificação das celulas em conjunto. -->
 <body>
+<h1>JOGO DA VELHA 2.0</h1>
+<!-- Utilizando o atributo style para alterar a fonte do texto no atributo h1 acima. -->
+<style type="text/css">
+    h1{
+        font-style:italic;
+        }
+    </style>
+    
     <div><table>
-        <th>a</th>
-        <th>b</th>
-        <th>c</th>
-        <th>d</th>
-        <th>e</th>
-        <th>f</th>
-        <th>g</th>
+        <!-- Criamos essas colunas somente com fins de embelezamento da página. -->
+        <th>/</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
 
+        <!-- Em cada celula utilizamos um sistema de cordenadas,
+             o qual identifica cada posição por sua respectiva linha e coluna,  -->
         <tr>
             <th>1</th>
-            <th class ="cell">a1</th>
-            <th class ="cell">b1</th>
-            <th class ="cell">c1</th>
-            <th class ="cell">d1</th>
-            <th class ="cell">e1</th>
-            <th class ="cell">f1</th>
-            <th class ="cell">g1</th>
+            <th class ="cell" id="11"><button></button></th>
+            <th class ="cell" id="12"><button></button></th>
+            <th class ="cell" id="13"><button></button></th>
+            <th class ="cell" id="14"><button></button></th>
+            <th class ="cell" id="15"><button></button></th>
+            <th class ="cell" id="16"><button></button></th>
+            <th class ="cell" id="17"><button></button></th>
             
         </tr>
         <tr>
             <th>2</th>
-            <th class ="cell">a2</th>
-            <th class ="cell">b2</th>
-            <th class ="cell">c2</th>
-            <th class ="cell">d2</th>
-            <th class ="cell">e2</th>
-            <th class ="cell">f2</th>
-            <th class ="cell">g2</th>
+            <th class ="cell" id="21"><button></button></th>
+            <th class ="cell" id="22"><button></button></th>
+            <th class ="cell" id="23"><button></button></th>
+            <th class ="cell" id="24"><button></button></th>
+            <th class ="cell" id="25"><button></button></th>
+            <th class ="cell" id="26"><button></button></th>
+            <th class ="cell" id="27"><button></button></th>
             
         </tr>
         <tr>
             <th>3</th>
-            <th class ="cell">a3</th>
-            <th class ="cell">b3</th>
-            <th class ="cell">c3</th>
-            <th class ="cell">d3</th>
-            <th class ="cell">e3</th>
-            <th class ="cell">f3</th>
-            <th class ="cell">g3</th>
+            <th class ="cell" id="31"><button></button></th>
+            <th class ="cell" id="32"><button></button></th>
+            <th class ="cell" id="33"><button></button></th>
+            <th class ="cell" id="34"><button></button></th>
+            <th class ="cell" id="35"><button></button></th>
+            <th class ="cell" id="36"><button></button></th>
+            <th class ="cell" id="37"><button></button></th>
             
         </tr>
         <tr>
             <th>4</th>
-            <th class ="cell">a4</th>
-            <th class ="cell">b4</th>
-            <th class ="cell">c4</th>
-            <th class ="cell">d4</th>
-            <th class ="cell">e4</th>
-            <th class ="cell">f4</th>
-            <th class ="cell">g4</th>
+            <th class ="cell" id="41"><button></button></th>
+            <th class ="cell" id="42"><button></button></th>
+            <th class ="cell" id="43"><button></button></th>
+            <th class ="cell" id="44"><button></button></th>
+            <th class ="cell" id="45"><button></button></th>
+            <th class ="cell" id="46"><button></button></th>
+            <th class ="cell" id="47"><button></button></th>
             
         </tr>
         <tr>
             <th>5</th>
-            <th class ="cell">a5</th>
-            <th class ="cell">b5</th>
-            <th class ="cell">c5</th>
-            <th class ="cell">d5</th>
-            <th class ="cell">e5</th>
-            <th class ="cell">f5</th>
-            <th class ="cell">g5</th>
+            <th class ="cell" id="51"><button></button></th>
+            <th class ="cell" id="52"><button></button></th>
+            <th class ="cell" id="53"><button></button></th>
+            <th class ="cell" id="54"><button></button></th>
+            <th class ="cell" id="55"><button></button></th>
+            <th class ="cell" id="56"><button></button></th>
+            <th class ="cell" id="57"><button></button></th>
             
         </tr>
         <tr>
             <th>6</th>
-            <th class ="cell">a6</th>
-            <th class ="cell">b6</th>
-            <th class ="cell">c6</th>
-            <th class ="cell">d6</th>
-            <th class ="cell">e6</th>
-            <th class ="cell">f6</th>
-            <th class ="cell">g6</th>
+            <th class ="cell" id="61"><button></button></th>
+            <th class ="cell" id="62"><button></button></th>
+            <th class ="cell" id="63"><button></button></th>
+            <th class ="cell" id="64"><button></button></th>
+            <th class ="cell" id="65"><button></button></th>
+            <th class ="cell" id="66"><button></button></th>
+            <th class ="cell" id="67"><button></button></th>
             
         </tr>
         <tr>
             <th>7</th>
-            <th class="cell">a7</th>
-            <th class="cell">b7</th>
-            <th class="cell">c7</th>
-            <th class="cell">d7</th>
-            <th class="cell">e7</th>
-            <th class="cell">f7</th>
-            <th class="cell">g7</th>
+            <th class="cell" id="71"><button></button></th>
+            <th class="cell" id="72"><button></button></th>
+            <th class="cell" id="73"><button></button></th>
+            <th class="cell" id="74"><button></button></th>
+            <th class="cell" id="75"><button></button></th>
+            <th class="cell" id="76"><button></button></th>
+            <th class="cell" id="77"><button></button></th>
             
         </tr>
     </table></div>
