@@ -1,3 +1,4 @@
+//teste
 //Criação dos simbolos utilizados no jogo
 const simbolo = ['x','!','$','o','?','%']//Criação dos simbolos que serão utilizados no jogo.
 const atual = document.querySelector(".atual")//Criação de uma constante por meio da busca com o 'querySelector' dentro do document.
