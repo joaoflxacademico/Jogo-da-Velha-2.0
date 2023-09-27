@@ -35,7 +35,7 @@ const simbolos = (num) =>{switch (num) {// Função auxiliar que irá definir qu
   case 5: return simbolo[5]
 }
 }
-const turno = (simbolo1,simbolo2,cont) =>{ /**  Função que irá utilizar da recursividade para repetir os turnos com os simbolos diferentes,
+const turno = (simbolo[0],simbolo[3],cont) =>{ /**  Função que irá utilizar da recursividade para repetir os turnos com os simbolos diferentes,
   esses que serão sorteados pela função auxiliar 'simbolos' */ 
   if (cont=4){
     const num1 = Math.floor(Math.random()*3)//Utilização da função 'Math.random' para randomizar as escolhas do simbolos.
