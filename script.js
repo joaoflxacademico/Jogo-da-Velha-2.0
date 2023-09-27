@@ -1,28 +1,3 @@
-//cria uma matriz de 7por 7 que vai servir como base para o nosso jogo
-/**const criarMatriz = (linhas, colunas, geradorValorCélula) =>
-  Array.from({ length: linhas }, (_, i) =>
-    Array.from({ length: colunas }, (_, j) => geradorValorCélula(i, j))
-  )
-
-const imprimirMatriz = (matriz, índice = 0) => {
-  if (índice === matriz.length) return
-  console.log(matriz[índice].join('\t'))
-  imprimirMatriz(matriz, índice + 1)
-};
-
-const gerarMatrizDePosições = (linhas, colunas) =>
-  criarMatriz(linhas, colunas, (i, j) => [i, j])
-
-const linhas = 7
-const colunas = 7
-
-const matrizDePosições = gerarMatrizDePosições(linhas, colunas)
-
-imprimirMatriz(matrizDePosições)*/
-
-
-
-
 //Criação dos simbolos utilizados no jogo
 const simbolo = ['x','!','$','o','?','%']
 
@@ -36,7 +11,7 @@ const simbolos = (num) =>{switch (num) {// Função auxiliar que irá definir qu
 }
 }
 const turno = (simbolo[0],simbolo[3],cont) =>{ /**  Função que irá utilizar da recursividade para repetir os turnos com os simbolos diferentes,
-  esses que serão sorteados pela função auxiliar 'simbolos' */ 
+  esses que serão sorteados pela função auxiliar 'simbolos' */ //Essa função já inicia o jogo com os simbolos 'x' e 'o'
   if (cont=4){
     const num1 = Math.floor(Math.random()*3)//Utilização da função 'Math.random' para randomizar as escolhas do simbolos.
     const num2 = Math.floor(Math.random()*3)+3
