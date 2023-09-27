@@ -49,3 +49,65 @@ const jogador = (contador) => {
 
 // Inicia o jogo com o jogador 1
 jogador(0)*/ 
+
+
+
+//código para verificar vitória  
+
+// Função tem como parametro uma matriz ,um simbolo que vai ser verificado,linha da matriz,coluna da matriz e as direçoes)
+function verificarSequencia(matriz, símbolo, linha, coluna, direcaoLinha, direcaoColuna, contador = 0) {
+  const linhas = matriz.length
+  const colunas = matriz[0].length
+//vai verificar se determinado elemento reaalmente pertence a matriz dada se n exister ouse o simbolo é diferente do simbolo que o código esta prcurando e retorna false caso essapreposições anterioress sejam verdadeiras   
+  if (linha < 0 || linha >= linhas || coluna < 0 || coluna >= colunas || matriz[linha][coluna] !== símbolo) {
+    return false
+  }
+
+  if (contador === 3) {
+    return true
+  }
+//chamada recursiva da propria função porem avançando uma casa da matriz para verificar toda a funçãp
+  return verificarSequencia(matriz, símbolo, linha + direcaoLinha, coluna + direcaoColuna, direcaoLinha, direcaoColuna, contador + 1)
+}
+
+// Função para verificar se existem 4 símbolos iguais em qualquer direção
+function verificarMatriz(matriz) {
+  const directions = [
+    [0, 1],   // Direita
+    [1, 0],   // baixo
+    [1, 1],   // Diagonal  direita
+    [1, -1],  // Diagonal  esquerda
+  ];
+//vai ver se existe uma sequencia de simbolos em uma posição nao sendo ele vazio
+  const verificaPosicao = (i, j) => {
+    const símbolo = matriz[i][j]
+// Verifica apenas se a posição não está vazia
+    if (símbolo !== ' ') 
+    // Verifica se há uma sequência em alguma das direções possíveis
+    
+    
+    {
+      return directions.some(([di, dj]) => verificarSequencia(matriz, símbolo, i, j, di, dj))
+    }
+
+    return false;
+  }
+//
+  return matriz.some((row, i) => row.some((_, j) => verificaPosicao(i, j)))
+}
+//exemplo de jogo
+const minhaMatriz =  [
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+  ['H', 'K', 'J', 'K', 'L', 'M', 'N'],
+  ['O', 'P', 'A', 'R', 'S', 'T', 'U'],
+  ['V', 'W', 'X', 'A', 'Z', '0', '1'],
+  ['2', '3', '4', '5', '6', '7', '8'],
+  ['9', '!', '@', '#', '$', '%', '^'],
+  ['&', '*', '(', ')', '_', '+', '=']
+]
+
+if (verificarMatriz(minhaMatriz)) {
+  console.log('Existem 4 símbolos iguais na matriz.')
+} else {
+  console.log('Não existem 4 símbolos iguais na matriz.')
+}
