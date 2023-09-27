@@ -112,3 +112,21 @@ if (verificarMatriz(minhaMatriz)) {
 } else {
   console.log('Não existem 4 símbolos iguais na matriz.')
 }
+
+//linkando a constante ao arquivio html
+const table = document.querySelectorAll(".cell button")
+
+//variave até descobrir uma melhor forma de resolver o problema
+let iscircleturn = false
+
+//função para mudar a casa do botão que foi clicado
+const handleclick = (e) => {
+    const cell = e.target
+    const classtoadd = iscircleturn? "o":"x"
+    e.target.innerHTML = "x"  
+}
+
+//função para definir a ação a ser tomada quando o botão for clicado
+for (const cell of table) {
+    cell.addEventListener("click", handleclick, { once: true})
+}
