@@ -1,0 +1,121 @@
+const simbolo = ['x','!','$','o','?','%']//Criação dos simbolos que serão utilizados no jogo.
+
+
+// função jogada da vez versão 1-João Vitor
+const jogada_da_vez = (ultima_jogada,simboloA,simboloB) =>{//Função com o objetivo de alterenar o simbolo da jogada atual.
+  if(ultima_jogada==simboloA){return simboloB}
+  else{return simboloA} 
+}
+
+// função jogada da vez versão 2-Wendel
+const contador_geral = 0
+const jogada_da_vez = (ultima_jogada,simboloA,simboloB) =>{//Função com o objetivo de alterenar o simbolo da jogada atual.
+  if(ultima_jogada%2==0){return simboloA}
+  if(ultima_jogada%2==1){return simboloB} 
+}
+
+// Função de seleção de simbolos-João vitor
+const simbolos = (num) =>{switch (num) {// Função auxiliar que irá selecionar qual é o simbolo sorteado pelo 'Math.random'
+   case 0: return simbolo[0]
+   case 1: return simbolo[1]
+   case 2: return simbolo[2]
+   case 3: return simbolo[3]
+   case 4: return simbolo[4]
+   case 5: return simbolo[5]
+ }
+ }
+
+// função aleatoriedade dos simbolos-João vitor
+ const turno = (simboloA=simbolo[0],simboloB=simbolo[3],cont=0) => { /**  Função que irá utilizar da recursividade para repetir os turnos com os simbolos diferentes,
+   esses que serão sorteados pela função auxiliar 'simbolos' */ //Essa função já inicia o jogo com os simbolos 'x' e 'o', isso pode ser alterado posteriormente.
+   if (cont=4){
+     const num1 = Math.floor(Math.random()*3)//Utilização da função 'Math.random' para randomizar as escolhas do simbolos.
+     const num2 = Math.floor(Math.random()*3)+3
+     return turno(simbolos(num1),simbolos(num2),cont=0)}//Retorno de uma nova rodada, após duas rodadas, com novos simbolos e o seu contador zerado.
+     else{
+       return turno(simboloA,simboloB,cont+1/*função de rodada, ou função clique/)
+     }
+ }
+// fnção de clique versão 1-Wendel
+ const clique=(celula)=>{
+   const index = celula.target.getAttribute("data-i")
+   celula.target.innerHTML=jogada_da_vez(contador_geral,simbolo[0],simbolo[3])
+   contador_geral=contador_geral+1
+   celula.target.removeEventListener("onclick", clique(celula));
+
+ }
+
+
+// função de clique versão 2-Jorge
+//linkando a constante ao arquivio html
+const table = document.querySelectorAll(".cell button")
+
+//variave até descobrir uma melhor forma de resolver o problema
+let iscircleturn = false
+
+//função para mudar a casa do botão que foi clicado
+const handleclick = (e) => {
+    const cell = e.target
+    const classtoadd = iscircleturn? "o":"x"
+    e.target.innerHTML = "x"  
+}
+
+//função para definir a ação a ser tomada quando o botão for clicado
+for (const cell of table) {
+    cell.addEventListener("click", handleclick, { once: true})
+}
+
+// função de matriz versão 1-Jackson
+// Função tem como parametro uma matriz ,um simbolo que vai ser verificado,linha da matriz,coluna da matriz e as direçoes)
+function verificarSequencia(matriz, símbolo, linha, coluna, direcaoLinha, direcaoColuna, contador = 0) {
+  const linhas = matriz.length
+  const colunas = matriz[0].length
+//vai verificar se determinado elemento reaalmente pertence a matriz dada se n exister ouse o simbolo é diferente do simbolo que o código esta prcurando e retorna false caso essapreposições anterioress sejam verdadeiras   
+  if (linha < 0 || linha >= linhas || coluna < 0 || coluna >= colunas || matriz[linha][coluna] !== símbolo) {
+    return false
+  }
+
+  if (contador === 3) {
+    return true
+  }
+//chamada recursiva da propria função porem avançando uma casa da matriz para verificar toda a funçãp
+  return verificarSequencia(matriz, símbolo, linha + direcaoLinha, coluna + direcaoColuna, direcaoLinha, direcaoColuna, contador + 1)
+}
+
+// Função para verificar se existem 4 símbolos iguais em qualquer direção
+function verificarMatriz(matriz) {
+  const directions = [
+    [0, 1],   // Direita
+    [1, 0],   // baixo
+    [1, 1],   // Diagonal  direita
+    [1, -1],  // Diagonal  esquerda
+  ];
+//vai ver se existe uma sequencia de simbolos em uma posição nao sendo ele vazio
+  const verificaPosicao = (i, j) => {
+    const símbolo = matriz[i][j]
+
+    if (símbolo !== ' ') {
+      return directions.some(([di, dj]) => verificarSequencia(matriz, símbolo, i, j, di, dj))
+    }
+
+    return false;
+  }
+//
+  return matriz.some((row, i) => row.some((_, j) => verificaPosicao(i, j)))
+}
+
+const minhaMatriz =  [
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+  ['H', 'A', 'J', 'K', 'L', 'M', 'N'],
+  ['O', 'P', 'G', 'R', 'S', 'T', 'U'],
+  ['V', 'W', 'X', 'A', 'Z', '0', '1'],
+  ['2', '3', '4', '5', '6', '7', '8'],
+  ['9', '!', '@', '#', '$', '%', '^'],
+  ['&', '*', '(', ')', '_', '+', '=']
+]
+
+if (verificarMatriz(minhaMatriz)) {
+  console.log('Existem 4 símbolos iguais na matriz.')
+} else {
+  console.log('Não existem 4 símbolos iguais na matriz.')
+}
