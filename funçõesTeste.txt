@@ -122,7 +122,7 @@ if (verificarMatriz(minhaMatriz)) {
 
 
 //codigo do jogo da velha original modificado para rodar no tbuleiro 7x7 e marcar pontos com sequencias de 4-Jorge(usando a matriz feita por Jackson)
-const currentPlayer = document.querySelector(".currentPlayer");
+const atual = document.querySelector(".atual");
 
 let selected;
 let player = "X";
@@ -176,7 +176,7 @@ function newMove(e) {
   }, [100]);
 
   player = player === "X" ? "O" : "X";
-  currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
+  atual.innerHTML = `JOGADOR DA VEZ: ${player}`;
 }
 
 function check() {
