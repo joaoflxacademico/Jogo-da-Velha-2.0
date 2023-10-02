@@ -70,7 +70,7 @@ for (const cell of table) {
 function verificarSequencia(matriz, símbolo, linha, coluna, direcaoLinha, direcaoColuna, contador = 0) {
   const linhas = matriz.length
   const colunas = matriz[0].length
-//vai verificar se determinado elemento reaalmente pertence a matriz dada se n exister ouse o simbolo é diferente do simbolo que o código esta prcurando e retorna false caso essapreposições anterioress sejam verdadeiras   
+//vai verificar se determinado elemento reaalmente pertence a matriz dada se n exister ou se o simbolo é diferente do simbolo que o código esta prcurando e retorna false caso essapreposições anterioress sejam verdadeiras   
   if (linha < 0 || linha >= linhas || coluna < 0 || coluna >= colunas || matriz[linha][coluna] !== símbolo) {
     return false
   }
@@ -201,3 +201,8 @@ function check() {
     return;
   }
 }
+
+// Instruções para a criação da função de matriz
+const v1 = document.getElementById("00").value
+console.log(v1)
+document.getElementById("output").innerHTML
