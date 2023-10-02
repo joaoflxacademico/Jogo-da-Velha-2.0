@@ -171,6 +171,8 @@ function newMove(e) {
 
   player = player === "X" ? "O" : "X";
   atual.innerHTML = `JOGADOR DA VEZ: ${player}`;
+  linha = e.target.value[0]
+  coluna = e.target.value[1]
 }
 
 function check() {

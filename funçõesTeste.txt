@@ -206,3 +206,6 @@ function check() {
 const v1 = document.getElementById("00").value
 console.log(v1)
 document.getElementById("output").innerHTML
+
+//usar dentro da função newMove:
+e.target.value //para acessar o valor tribuido a cada butão
