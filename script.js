@@ -1,4 +1,4 @@
-const simbolo = ['X','♣','♠','O','♦','♥']//Criação dos simbolos que serão utilizados no jogo.
+const simbolo = [['X','♣','♠'],['O','♦','♥']]//Criação dos simbolos que serão utilizados no jogo.
 
 
 const simbolos = (num) =>{switch (num) {// Função auxiliar que irá selecionar qual é o simbolo sorteado pelo 'Math.random'
@@ -15,8 +15,7 @@ const currentPlayer = document.querySelector(".currentPlayer");
 
 
 let matriz;
-
-let player = simbolos(Math.floor(Math.random()*3));
+let player = simbolo[0][Math.floor(Math.random()*3)];
 
 // Criar uma matriz vazia 7x7
 const matrizVazia = new Array(7);
@@ -50,7 +49,7 @@ const turno = (simboloA=simbolo[0],simboloB=simbolo[3],cont=0) => { /**  Funçã
     }
 }
 
-
+let contador=0;
 function newMove(e) {
   const index = e.target.getAttribute("id");
   // pegaria a matriz vazia e adicionaria o player com o getelementbyid e utilizamos o id para colocar o item com o index certo dentro da matriz
@@ -62,8 +61,8 @@ function newMove(e) {
   setTimeout(() => {
     verificarMatriz(matriz);//**************AINDA NÃO ESTÁ VERIFICANDO A MATRIZ PARA COMPUTAR A VITÓRIA OU EMPATE********************
   }, [100]);
-
-  player = simbolos(Math.floor(Math.random()*3)+3);
+  contador=contador+1
+  player = simbolo[contador%2][Math.floor(Math.random()*3)];
   currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
 }
 
