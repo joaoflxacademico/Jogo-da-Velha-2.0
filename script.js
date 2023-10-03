@@ -1,68 +1,52 @@
 const simbolo = [['X','♣','♠'],['O','♦','♥']]//Criação dos simbolos que serão utilizados no jogo, separados os para cada player.
 
 
-const simbolos = (num) =>{switch (num) {// Função auxiliar que irá selecionar qual é o simbolo sorteado pelo 'Math.random'
-  case 0: return simbolo[0]
-  case 1: return simbolo[1]
-  case 2: return simbolo[2]
-  case 3: return simbolo[3]
-  case 4: return simbolo[4]
-  case 5: return simbolo[5]
-}
-}
 
 const currentPlayer = document.querySelector(".currentPlayer");
 
 
 let matriz;
-let player1 = simbolo[0][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player2
+let player1 = simbolo[0][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player1
 let player2= simbolo[1][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player2
-let player=player1;
-let contador=0;
+let player=player1; // O primeiro a jogar será o player1
+let contador = 0//!
 // Criar uma matriz vazia 7x7
 const matrizVazia = new Array(7);
 
-for (let i = 0; i < 7; i++) {
+for (let i = 0; i < 7; i++) {//!
     matrizVazia[i] = new Array(7).fill('');
 }
 
 // Agora você tem uma matriz 7x7 preenchida com valores vazios ('')
 
 function init() {
-  matriz = [...matrizVazia];
+  matriz = [...matrizVazia]; // Utilização do spread para clonar a matriz criada pela função matrizVazia
 console.log(matriz)
-  currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
+  currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`; // Apresenta qual o atual jogador da vez
 
-  document.querySelectorAll(".cell button").forEach((item) => {
-    item.innerHTML = "";
-    item.addEventListener("click", newMove);
+  document.querySelectorAll(".cell button").forEach((item) => {//!
+    item.innerHTML = ""; // Transforma todos os textos dos botões em vazios 
+    item.addEventListener("click", newMove); // Adiciona a ação de clique em cada botão da matriz
   });
 }
 init();
 
-const turno = (simboloA=simbolo[0],simboloB=simbolo[3],cont=0) => { /**  Função que irá utilizar da recursividade para repetir os turnos com os simbolos diferentes,
-  esses que serão sorteados pela função auxiliar 'simbolos' */ //Essa função já inicia o jogo com os simbolos 'x' e 'o', isso pode ser alterado posteriormente.
-  if (cont=4){
-    const num1 = Math.floor(Math.random()*3)//Utilização da função 'Math.random' para randomizar as escolhas do simbolos.
-    const num2 = Math.floor(Math.random()*3)+3
-    return turno(simbolos(num1),simbolos(num2),cont=0)}//Retorno de uma nova rodada, após duas rodadas, com novos simbolos e o seu contador zerado.
-    else{
-      return turno(simboloA,simboloB,cont+1/**função de rodada, ou função clique*/)
-    }
-}
-
 
 function newMove(e) {
   const index = e.target.getAttribute("id");
-  // pegaria a matriz vazia e adicionaria o player com o getelementbyid e utilizamos o id para colocar o item com o index certo dentro da matriz
-  e.target.innerHTML = player;
-  e.target.removeEventListener("click", newMove);
-  linha = e.target.value[0]
-  coluna = e.target.value[1]
-  matriz[parseInt(linha)][parseInt(coluna)] = player
+  e.target.innerHTML = player; // Vai inserir o simbolo do jogador dentro do texto do botão clicado
+  e.target.removeEventListener("click", newMove);// Remove a ação de clique do botão já selecionado 
+  linha = e.target.value[0] // Define a linha do botão acionado
+  coluna = e.target.value[1] // Define a coluna do botão acionado 
+  matriz[parseInt(linha)][parseInt(coluna)] = player // Adiciona o simbolo na matriz criada por meio dos indexes da respectiva linha e coluna
   setTimeout(() => {
-    verificarMatriz(matriz);//**************AINDA NÃO ESTÁ VERIFICANDO A MATRIZ PARA COMPUTAR A VITÓRIA OU EMPATE********************
-  }, [100]);
+    if (verificarMatriz(matriz)) { // Verifica a matriz se algum jogador ganhou por meio da função verificarMatriz 
+  alert(`JOGADOR ${contador%2?player1:player2} GANHOU`) // Apresenta o jogador vencedor
+}
+    else if(contador==48){ // Termina o jogo em um empate se a matriz está completa
+  alert(`DEU EMPATE`)
+}
+}, [100]);
   contador=contador+1;
   if(contador%4 == 0){player1 = simbolo[0][Math.floor(Math.random()*3)];//na 4ª partida, troca o símbolo do player 1
                       player = player1;}else{
@@ -108,7 +92,7 @@ function verificarMatriz(matriz) {
   const verificaPosicao = (i, j) => {
     const símbolo = matriz[i][j]
 // Verifica apenas se a posição não está vazia
-    if (símbolo !== ' ') 
+    if (símbolo !== '') 
     // Verifica se há uma sequência em alguma das direções possíveis
     
     
