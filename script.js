@@ -1,4 +1,4 @@
-const simbolo = ['X','','♠','O','♦','♥']//Criação dos simbolos que serão utilizados no jogo.
+const simbolo = ['X','♣','♠','O','♦','♥']//Criação dos simbolos que serão utilizados no jogo.
 
 
 const simbolos = (num) =>{switch (num) {// Função auxiliar que irá selecionar qual é o simbolo sorteado pelo 'Math.random'
