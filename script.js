@@ -15,8 +15,9 @@ const currentPlayer = document.querySelector(".currentPlayer");
 
 
 let matriz;
-let player = simbolo[0][Math.floor(Math.random()*3)];
-
+let player1 = simbolo[0][Math.floor(Math.random()*3)];
+let player2= simbolo[1][Math.floor(Math.random()*3)];
+let player=player1;
 // Criar uma matriz vazia 7x7
 const matrizVazia = new Array(7);
 
@@ -61,8 +62,18 @@ function newMove(e) {
   setTimeout(() => {
     verificarMatriz(matriz);//**************AINDA NÃO ESTÁ VERIFICANDO A MATRIZ PARA COMPUTAR A VITÓRIA OU EMPATE********************
   }, [100]);
-  contador=contador+1
-  player = simbolo[contador%2][Math.floor(Math.random()*3)];
+  contador=contador+1;
+  if(contador%4 == 0){player1 = simbolo[0][Math.floor(Math.random()*3)];
+                      player = player1;}else{
+    if((contador-1)%4 == 0){player2 = simbolo[1][Math.floor(Math.random()*3)]
+                            player = player2;}else{
+       if(contador%2 == 0){player = player1;}else{
+         if(contador%2 == 1){player = player2;}
+       }
+                              
+                            }
+  }
+  //player = simbolo[contador%2][Math.floor(Math.random()*3)];
   currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
 }
 
