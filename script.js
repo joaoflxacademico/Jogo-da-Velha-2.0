@@ -1,4 +1,4 @@
-const simbolo = [['X','♣','♠'],['O','♦','♥']]//Criação dos simbolos que serão utilizados no jogo.
+const simbolo = [['X','♣','♠'],['O','♦','♥']]//Criação dos simbolos que serão utilizados no jogo, separados os para cada player.
 
 
 const simbolos = (num) =>{switch (num) {// Função auxiliar que irá selecionar qual é o simbolo sorteado pelo 'Math.random'
@@ -15,9 +15,10 @@ const currentPlayer = document.querySelector(".currentPlayer");
 
 
 let matriz;
-let player1 = simbolo[0][Math.floor(Math.random()*3)];
-let player2= simbolo[1][Math.floor(Math.random()*3)];
+let player1 = simbolo[0][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player2
+let player2= simbolo[1][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player2
 let player=player1;
+let contador=0;
 // Criar uma matriz vazia 7x7
 const matrizVazia = new Array(7);
 
@@ -50,7 +51,7 @@ const turno = (simboloA=simbolo[0],simboloB=simbolo[3],cont=0) => { /**  Funçã
     }
 }
 
-let contador=0;
+
 function newMove(e) {
   const index = e.target.getAttribute("id");
   // pegaria a matriz vazia e adicionaria o player com o getelementbyid e utilizamos o id para colocar o item com o index certo dentro da matriz
@@ -63,12 +64,12 @@ function newMove(e) {
     verificarMatriz(matriz);//**************AINDA NÃO ESTÁ VERIFICANDO A MATRIZ PARA COMPUTAR A VITÓRIA OU EMPATE********************
   }, [100]);
   contador=contador+1;
-  if(contador%4 == 0){player1 = simbolo[0][Math.floor(Math.random()*3)];
+  if(contador%4 == 0){player1 = simbolo[0][Math.floor(Math.random()*3)];//na 4ª partida, troca o símbolo do player 1
                       player = player1;}else{
-    if((contador-1)%4 == 0){player2 = simbolo[1][Math.floor(Math.random()*3)]
+    if((contador-1)%4 == 0){player2 = simbolo[1][Math.floor(Math.random()*3)]//na 5ª partida, troca o símbolo do player 1
                             player = player2;}else{
-       if(contador%2 == 0){player = player1;}else{
-         if(contador%2 == 1){player = player2;}
+       if(contador%2 == 0){player = player1;}else{//se a jogada for par, quem joga é o player 1
+         if(contador%2 == 1){player = player2;}//se a jogada for impar, quem joga é o player 2
        }
                               
                             }
