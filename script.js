@@ -11,11 +11,12 @@ let player2= simbolo[1][Math.floor(Math.random()*3)];//inicia um símbolo aleat�
 let player=player1; // O primeiro a jogar será o player1
 let contador = 0//!
 // Criar uma matriz vazia 7x7
-const matrizVazia = new Array(7);
-
-for (let i = 0; i < 7; i++) {//!
-    matrizVazia[i] = new Array(7).fill('');
+function criarMatrizVazia(linhas, colunas) {
+  return Array.from({ length: linhas }, () => Array(colunas).fill(''));
 }
+const matrizVazia = criarMatrizVazia(7, 7);
+  
+ 
 
 // Agora você tem uma matriz 7x7 preenchida com valores vazios ('')
 
@@ -95,7 +96,7 @@ function verificarMatriz(matriz) {
     if (símbolo !== '') 
     // Verifica se há uma sequência em alguma das direções possíveis
     
-    
+    //vai pegar a matriz e ler ela tentando achar silbolos que bata e caso esteja vazio ela apenas assa para o proximo,se nao ela guarda a i dormação e procura de existe outros simbolos iguais nas diagonais linha ou colunas
     {
       return directions.some(([di, dj]) => verificarSequencia(matriz, símbolo, i, j, di, dj))
     }
