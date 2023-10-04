@@ -21,15 +21,7 @@ const matrizVazia = criarMatrizVazia(7, 7);
 // Agora você tem uma matriz 7x7 preenchida com valores vazios ('')
 
 function init() {
-  matriz = [
-    [,,,,,,],
-    [,,,,,,],
-    [,,,,,,],
-    [,,,,,,],
-    [,,,,,,],
-    [,,,,,,],
-    [,,,,,,]
-  ]; // Utilização do spread para clonar a matriz criada pela função matrizVazia
+  matriz = criarMatrizVazia(7, 7); // Utilização do spread para clonar a matriz criada pela função matrizVazia
 console.log(matriz)
   currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`; // Apresenta qual o atual jogador da vez
 
