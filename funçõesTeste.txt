@@ -70,7 +70,7 @@ for (const cell of table) {
 function verificarSequencia(matriz, símbolo, linha, coluna, direcaoLinha, direcaoColuna, contador = 0) {
   const linhas = matriz.length
   const colunas = matriz[0].length
-//vai verificar se determinado elemento reaalmente pertence a matriz dada se n exister ou se o simbolo é diferente do simbolo que o código esta prcurando e retorna false caso essapreposições anterioress sejam verdadeiras   
+//vai verificar se determinado elemento realmente pertence a matriz dada se n exister ou se o simbolo é diferente do simbolo que o código esta prcurando e retorna false caso essapreposições anterioress sejam verdadeiras   
   if (linha < 0 || linha >= linhas || coluna < 0 || coluna >= colunas || matriz[linha][coluna] !== símbolo) {
     return false
   }
@@ -122,7 +122,7 @@ if (verificarMatriz(minhaMatriz)) {
 
 
 //codigo do jogo da velha original modificado para rodar no tbuleiro 7x7 e marcar pontos com sequencias de 4-Jorge(usando a matriz feita por Jackson)
-const atual = document.querySelector(".atual");
+const currentPlayer = document.querySelector(".currentPlayer");
 
 let selected;
 let player = "X";
@@ -176,7 +176,7 @@ function newMove(e) {
   }, [100]);
 
   player = player === "X" ? "O" : "X";
-  atual.innerHTML = `JOGADOR DA VEZ: ${player}`;
+  currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
 }
 
 function check() {
@@ -207,5 +207,129 @@ const v1 = document.getElementById("00").value
 console.log(v1)
 document.getElementById("output").innerHTML
 
-//usar dentro da função newMove:
-e.target.value //para acessar o valor tribuido a cada butão
+
+
+
+
+
+
+
+//******************************************************************************************************************
+
+
+
+const simbolo = [['X','♣','♠'],['O','♦','♥']]//Criação dos simbolos que serão utilizados no jogo, separados os para cada player.
+
+// Criar uma matriz vazia 7x7
+function criarMatrizVazia(linhas, colunas) {
+  return Array.from({ length: linhas }, () => Array(colunas).fill(''));
+}
+const matrizVazia = criarMatrizVazia(7, 7);
+
+// Agora você tem uma matriz 7x7 preenchida com valores vazios ('')
+
+const currentPlayer = document.querySelector(".currentPlayer");
+
+function geral(matriz = [...criarMatrizVazia(7,7)],player1 = simbolo[0][Math.floor(Math.random()*3)],player2 = simbolo[1][Math.floor(Math.random()*3)],player = player1,contador=0){
+
+
+function init() {
+console.log(matriz)
+  currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`; // Apresenta qual o atual jogador da vez
+
+  document.querySelectorAll(".cell button").forEach((item) => {//!
+    item.innerHTML = ""; // Transforma todos os textos dos botões em vazios 
+    item.addEventListener("click", newMove); // Adiciona a ação de clique em cada botão da matriz
+  });
+}
+contador==0?init():// Inicia a partida quando geral se inicia
+
+
+function newMove(e) {
+  const index = e.target.getAttribute("id");
+  e.target.innerHTML = player; // Vai inserir o simbolo do jogador dentro do texto do botão clicado
+  e.target.removeEventListener("click", newMove);// Remove a ação de clique do botão já selecionado 
+  linha = e.target.value[0] // Define a linha do botão acionado
+  coluna = e.target.value[1] // Define a coluna do botão acionado 
+  const novaMatriz = matriz[parseInt(linha)][parseInt(coluna)] = player // Adiciona o simbolo na matriz criada por meio dos indexes da respectiva linha e coluna
+  setTimeout(() => {
+    if (verificarMatriz(matriz)) { // Verifica a matriz se algum jogador ganhou por meio da função verificarMatriz 
+  alert(`JOGADOR ${contador%2?player1:player2} GANHOU`)// Apresenta o jogador vencedor
+  geral()
+}
+    else if(contador==49){ // Termina o jogo em um empate se a matriz está completa
+  alert(`DEU EMPATE`)
+  geral()
+}
+}, [100]);
+  const novoContador=contador+1;
+  if(contador%4 == 0){const novoPlayer1 = simbolo[0][Math.floor(Math.random()*3)];//na 4ª partida, troca o símbolo do player 1
+                      const novoPlayer = player1;
+                      geral(novaMatriz,novoPlayer1,player2,novoPlayer,novoContador)}
+  else{
+        if((contador-1)%4 == 0){const novoPlayer2 = simbolo[1][Math.floor(Math.random()*3)]//na 5ª partida, troca o símbolo do player 1
+          const novoPlayer = player2;
+          geral(novaMatriz,player1,novoPlayer2,novoPlayer,novoContador)}
+          else{
+              if(contador%2 == 0){
+                const novoPlayer = player1;
+                geral(novaMatriz,player1,player2,novoPlayer,novoContador)}
+                else{//se a jogada for par, quem joga é o player 1
+                    if(contador%2 == 1){
+                    const novoPlayer = player2;
+                    geral(novaMatriz,player1,player2,novoPlayer,novoContador)}//se a jogada for impar, quem joga é o player 2
+       }
+                              
+                            }
+  }
+  //player = simbolo[contador%2][Math.floor(Math.random()*3)];
+  currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
+}
+
+
+}
+geral()
+
+//código para verificar vitória  
+
+// Função tem como parametro uma matriz ,um simbolo que vai ser verificado,linha da matriz,coluna da matriz e as direçoes)
+function verificarSequencia(matriz, símbolo, linha, coluna, direcaoLinha, direcaoColuna, contador = 0) {
+  const linhas = matriz.length
+  const colunas = matriz[0].length
+//vai verificar se determinado elemento reaalmente pertence a matriz dada se n exister ouse o simbolo é diferente do simbolo que o código esta prcurando e retorna false caso essapreposições anterioress sejam verdadeiras   
+  if (linha < 0 || linha >= linhas || coluna < 0 || coluna >= colunas || matriz[linha][coluna] !== símbolo) {
+    return false
+  }
+
+  if (contador === 3) {
+    return true
+  }
+//chamada recursiva da propria função porem avançando uma casa da matriz para verificar toda a funçãp
+  return verificarSequencia(matriz, símbolo, linha + direcaoLinha, coluna + direcaoColuna, direcaoLinha, direcaoColuna, contador + 1)
+}
+
+// Função para verificar se existem 4 símbolos iguais em qualquer direção
+function verificarMatriz(matriz) {
+  const directions = [
+    [0, 1],   // Direita
+    [1, 0],   // baixo
+    [1, 1],   // Diagonal  direita
+    [1, -1],  // Diagonal  esquerda
+  ];
+//vai ver se existe uma sequencia de simbolos em uma posição nao sendo ele vazio
+  const verificaPosicao = (i, j) => {
+    const símbolo = matriz[i][j]
+// Verifica apenas se a posição não está vazia
+    if (símbolo !== '') 
+    // Verifica se há uma sequência em alguma das direções possíveis
+    
+    
+    {
+      return directions.some(([di, dj]) => verificarSequencia(matriz, símbolo, i, j, di, dj))
+    }
+
+    return false;
+  }
+//
+  return matriz.some((row, i) => row.some((_, j) => verificaPosicao(i, j)))
+}
