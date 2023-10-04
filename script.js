@@ -44,7 +44,7 @@ function newMove(e) {
     if (verificarMatriz(matriz)) { // Verifica a matriz se algum jogador ganhou por meio da função verificarMatriz 
   alert(`JOGADOR ${contador%2?player1:player2} GANHOU`) // Apresenta o jogador vencedor
 }
-    else if(contador==48){ // Termina o jogo em um empate se a matriz está completa
+    else if(contador==49){ // Termina o jogo em um empate se a matriz está completa
   alert(`DEU EMPATE`)
 }
 }, [100]);
