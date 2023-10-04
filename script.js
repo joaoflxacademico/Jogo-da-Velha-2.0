@@ -21,7 +21,15 @@ const matrizVazia = criarMatrizVazia(7, 7);
 // Agora você tem uma matriz 7x7 preenchida com valores vazios ('')
 
 function init() {
-  matriz = [...matrizVazia]; // Utilização do spread para clonar a matriz criada pela função matrizVazia
+  matriz = [
+    [,,,,,,],
+    [,,,,,,],
+    [,,,,,,],
+    [,,,,,,],
+    [,,,,,,],
+    [,,,,,,],
+    [,,,,,,]
+  ]; // Utilização do spread para clonar a matriz criada pela função matrizVazia
 console.log(matriz)
   currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`; // Apresenta qual o atual jogador da vez
 
@@ -43,9 +51,13 @@ function newMove(e) {
   setTimeout(() => {
     if (verificarMatriz(matriz)) { // Verifica a matriz se algum jogador ganhou por meio da função verificarMatriz 
   alert(`JOGADOR ${contador%2?player1:player2} GANHOU`) // Apresenta o jogador vencedor
+  init();//reiniciar o jogo
+  contador = 0;//reiniciar o contador
 }
-    else if(contador==48){ // Termina o jogo em um empate se a matriz está completa
+    else if(contador==49){ // Termina o jogo em um empate se a matriz está completa
   alert(`DEU EMPATE`)
+  contador = 0;//reiniciar o contador
+  init();//reiniciar o jogo
 }
 }, [100]);
   contador=contador+1;
