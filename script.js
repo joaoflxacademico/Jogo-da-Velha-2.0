@@ -43,12 +43,15 @@ function newMove(e) {
   setTimeout(() => {
     if (verificarMatriz(matriz)) { // Verifica a matriz se algum jogador ganhou por meio da função verificarMatriz 
   alert(`JOGADOR ${contador%2?player1:player2} GANHOU`) // Apresenta o jogador vencedor
+  player = player1
   init();//reiniciar o jogo
   contador = 0;//reiniciar o contador
+  
 }
     else if(contador==49){ // Termina o jogo em um empate se a matriz está completa
   alert(`DEU EMPATE`)
   contador = 0;//reiniciar o contador
+  player = player1
   init();//reiniciar o jogo
 }
 }, [100]);
