@@ -34,12 +34,6 @@ console.log(matriz)
 }
 init();
 
-const text = "Instruções: as regras do jogo da velha 2.0, são as seguintes, cada jogador possui uma gama de 3 possíveis símbolos, e a cada duas rodadas os simbolos serão sorteados podendo ser algum dos 3 símbolos, a vitória será obitda quando um dos jogadores obter uma sequência de 4 símbolos iguais, caso nenhum jogador obtenha uma sequência quando o campo estiver completo o jogo terminará em um empate. "
-
-const instrucoes = () =>{
-  alert(text)
-}
-
 
 function newMove(e) {
   e.target.removeEventListener("click", newMove);// Remove a ação de clique do botão já selecionado
