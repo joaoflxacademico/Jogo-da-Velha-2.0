@@ -4,12 +4,14 @@ const simbolo = [['X','♣','♠'],['O','♦','♥']]//Criação dos simbolos qu
 
 const currentPlayer = document.querySelector(".currentPlayer");
 
+// Não conseguimos transformar nosso código por completo em funcional,
+// e por isso precisamos manter variaveis como(a matriz, o atual simbolo dos jogadores, o atual jogador da vez e o contador.)
 
 let matriz;
 let player1 = simbolo[0][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player1
 let player2= simbolo[1][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player2
 let player=player1; // O primeiro a jogar será o player1
-let contador = 0//!
+let contador = 0 
 // Criar uma matriz vazia 7x7
 function criarMatrizVazia(linhas, colunas) {
   return Array.from({ length: linhas }, () => Array(colunas).fill(''));
@@ -32,14 +34,21 @@ console.log(matriz)
 }
 init();
 
+const text = "Instruções: as regras do jogo da velha 2.0, são as seguintes, cada jogador possui uma gama de 3 possíveis símbolos, e a cada duas rodadas os simbolos serão sorteados podendo ser algum dos 3 símbolos, a vitória será obitda quando um dos jogadores obter uma sequência de 4 símbolos iguais, caso nenhum jogador obtenha uma sequência quando o campo estiver completo o jogo terminará em um empate. "
+
+const instrucoes = () =>{
+  alert(text)
+}
+
 
 function newMove(e) {
-  const index = e.target.getAttribute("id");
-  e.target.innerHTML = player; // Vai inserir o simbolo do jogador dentro do texto do botão clicado
-  e.target.removeEventListener("click", newMove);// Remove a ação de clique do botão já selecionado 
+  e.target.removeEventListener("click", newMove);// Remove a ação de clique do botão já selecionado
   linha = e.target.value[0] // Define a linha do botão acionado
   coluna = e.target.value[1] // Define a coluna do botão acionado 
+  const cor = ((contador%2)==0)?"rgb(2,82,255)":"rgb(143,0,0)" // Criação de uma condicional para a troca das cores do simbolo dos jogadores
+  document.getElementById(`${linha+coluna}`).style.color = cor // Faz a busca do item com o id do botão e altera a cor do texto dentro deste endereço
   matriz[parseInt(linha)][parseInt(coluna)] = player // Adiciona o simbolo na matriz criada por meio dos indexes da respectiva linha e coluna
+  e.target.innerHTML = player; // Vai inserir o simbolo do jogador dentro do texto do botão clicado
   setTimeout(() => {
     if (verificarMatriz(matriz)) { // Verifica a matriz se algum jogador ganhou por meio da função verificarMatriz 
   alert(`JOGADOR ${contador%2?player1:player2} GANHOU`) // Apresenta o jogador vencedor
