@@ -13,8 +13,7 @@
 <body>
     <main>
 <h1>JOGO DA VELHA 2.0</h1>
-      <h2 class="currentPlayer"></h2>
-      <h3> <button class="btn" onclick="instrucoes()">Mostrar instruções</button></h3>
+    <h2 class="currentPlayer"></h2>
 <!-- Utilizando o atributo style para alterar a fonte do texto no atributo h1 acima. -->
 <style type="text/css">
     h1{
@@ -23,98 +22,84 @@
     </style>
     
     <div><table>
-        <!-- Criamos essas colunas somente com fins de embelezamento da página. -->
-        <th>/</th>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-        <th>4</th>
-        <th>5</th>
-        <th>6</th>
-        <th>7</th>
 
         <!-- Em cada celula utilizamos um sistema de cordenadas,
              o qual identifica cada posição por sua respectiva linha e coluna, variando de 0 a 6,
               e que infrma sua respectiva posição dentro da matriz criada no JS  -->
         <tr>
-            <th>1</th>
-            <th class ="cell"><button id="00" value="00"></button></th>
-            <th class ="cell"><button id="01" value="01"></button></th>
-            <th class ="cell"><button id="02" value="02"></button></th>
-            <th class ="cell"><button id="03" value="03"></button></th>
-            <th class ="cell"><button id="04" value="04"></button></th>
-            <th class ="cell"><button id="05" value="05"></button></th>
-            <th class ="cell"><button id="06" value="06"></button></th>
+            <th class ="cell"><button id="00" value="00" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="01" value="01" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="02" value="02" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="03" value="03" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="04" value="04" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="05" value="05" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="06" value="06" style="color:RGB(0, 0, 0)"></button></th>
             
         </tr>
         <tr>
-            <th>2</th>
-            <th class ="cell"><button id="10" value="10"></button></th>
-            <th class ="cell"><button id="11" value="11"></button></th>
-            <th class ="cell"><button id="12" value="12"></button></th>
-            <th class ="cell"><button id="13" value="13"></button></th>
-            <th class ="cell"><button id="14" value="14"></button></th>
-            <th class ="cell"><button id="15" value="15"></button></th>
-            <th class ="cell"><button id="16" value="16"></button></th>
+            <th class ="cell"><button id="10" value="10" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="11" value="11" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="12" value="12" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="13" value="13" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="14" value="14" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="15" value="15" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="16" value="16" style="color:RGB(0, 0, 0)"></button></th>
             
         </tr>
         <tr>
-            <th>3</th>
-            <th class ="cell"><button id="20" value="20"></button></th>
-            <th class ="cell"><button id="21" value="21"></button></th>
-            <th class ="cell"><button id="22" value="22"></button></th>
-            <th class ="cell"><button id="23" value="23"></button></th>
-            <th class ="cell"><button id="24" value="24"></button></th>
-            <th class ="cell"><button id="25" value="25"></button></th>
-            <th class ="cell"><button id="26" value="26"></button></th>
+            <th class ="cell"><button id="20" value="20" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="21" value="21" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="22" value="22" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="23" value="23" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="24" value="24" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="25" value="25" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="26" value="26" style="color:RGB(0, 0, 0)"></button></th>
             
         </tr>
         <tr>
-            <th>4</th>
-            <th class ="cell"><button id="30" value="30"></button></th>
-            <th class ="cell"><button id="31" value="31"></button></th>
-            <th class ="cell"><button id="32" value="32"></button></th>
-            <th class ="cell"><button id="33" value="33"></button></th>
-            <th class ="cell"><button id="34" value="34"></button></th>
-            <th class ="cell"><button id="35" value="35"></button></th>
-            <th class ="cell"><button id="36" value="36"></button></th>
+            <th class ="cell"><button id="30" value="30" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="31" value="31" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="32" value="32" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="33" value="33" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="34" value="34" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="35" value="35" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="36" value="36" style="color:RGB(0, 0, 0)"></button></th>
             
         </tr>
         <tr>
-            <th>5</th>
-            <th class ="cell"><button id="40" value="40"></button></th>
-            <th class ="cell"><button id="41" value="41"></button></th>
-            <th class ="cell"><button id="42" value="42"></button></th>
-            <th class ="cell"><button id="43" value="43"></button></th>
-            <th class ="cell"><button id="44" value="44"></button></th>
-            <th class ="cell"><button id="45" value="45"></button></th>
-            <th class ="cell"><button id="46" value="46"></button></th>
+            <th class ="cell"><button id="40" value="40" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="41" value="41" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="42" value="42" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="43" value="43" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="44" value="44" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="45" value="45" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="46" value="46" style="color:RGB(0, 0, 0)"></button></th>
             
         </tr>
         <tr>
-            <th>6</th>
-            <th class ="cell"><button id="50" value="50"></button></th>
-            <th class ="cell"><button id="51" value="51"></button></th>
-            <th class ="cell"><button id="52" value="52"></button></th>
-            <th class ="cell"><button id="53" value="53"></button></th>
-            <th class ="cell"><button id="54" value="54"></button></th>
-            <th class ="cell"><button id="55" value="55"></button></th>
-            <th class ="cell"><button id="56" value="56"></button></th>
+            <th class ="cell"><button id="50" value="50" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="51" value="51" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="52" value="52" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="53" value="53" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="54" value="54" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="55" value="55" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="56" value="56" style="color:RGB(0, 0, 0)"></button></th>
             
         </tr>
         <tr>
-            <th>7</th>
-            <th class ="cell"><button id="60" value="60"></button></th>
-            <th class ="cell"><button id="61" value="61"></button></th>
-            <th class ="cell"><button id="62" value="62"></button></th>
-            <th class ="cell"><button id="63" value="63"></button></th>
-            <th class ="cell"><button id="64" value="64"></button></th>
-            <th class ="cell"><button id="65" value="65"></button></th>
-            <th class ="cell"><button id="66" value="66"></button></th>
+            <th class ="cell"><button id="60" value="60" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="61" value="61" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="62" value="62" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="63" value="63" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="64" value="64" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="65" value="65" style="color:RGB(0, 0, 0)"></button></th>
+            <th class ="cell"><button id="66" value="66" style="color:RGB(0, 0, 0)"></button></th>
             
         </tr>
     </table></div>
-  
+    <div><button class="btn" onclick="instrucoes()">Mostrar instruções</button></div>
+    <div><button class="botaoescolha" onclick="init()">Novo jogo</button></div>
+    <h2 class="atual"></h2>
     </main>
     <script src="script.js"></script>
 </body>
