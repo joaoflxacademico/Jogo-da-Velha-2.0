@@ -25,10 +25,29 @@ h1{
   color: #000000;
   background: linear-gradient(0.25turn, #3f87a6, #f69d3c);
   font-size: 2.5rem;
+  cursor:pointer;
 }
 h2{
     display: flex;
     flex-direction: row;
     align-items:center;
     margin-left: 430px;
+}
+h3{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    margin-left: 424px;
+    
+}
+
+.btn{
+  border: none;
+  background-color:Transparent;
+  cursor:pointer;
+  font-Size:20px;
+  font-weight:bold;
+  text-decoration:underline;
+  font-family:Times, Times New Roman, serif;
+  
 }

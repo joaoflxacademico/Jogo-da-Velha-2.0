@@ -113,3 +113,6 @@ function verificarMatriz(matriz) {
 //
   return matriz.some((row, i) => row.some((_, j) => verificaPosicao(i, j)))
 }
+function instrucoes(){
+  alert("1-Cada jogador tem 3 símbolos.\n2-Os símbolos são alterados a cada duas rodadas.\n3-Vence quem possuir 4 símbolos iguais em qualquer direção")
+}
