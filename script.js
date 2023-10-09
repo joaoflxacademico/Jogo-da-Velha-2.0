@@ -32,11 +32,11 @@ function init() {
 console.log(matriz)
   currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`; // Apresenta qual o atual jogador da vez
 
-  document.querySelectorAll(".cell button").forEach((item) => {//!
-    item.innerHTML = ""; // Transforma todos os textos dos botões em vazios 
-    item.addEventListener("click", newMove); // Adiciona a ação de clique em cada botão da matriz
-  });
-}
+  const buttons = Array.from(document.querySelectorAll('.cell button'));
+  buttons.map((item) =>{
+    item.innerHTML= ""// Transforma todos os textos dos botões em vazios 
+    item.addEventListener("click", newMove)})// Adiciona a ação de clique em cada botão da matriz
+  }
 init();
 
 
