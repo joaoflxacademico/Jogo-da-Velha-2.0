@@ -5,9 +5,14 @@ const simbolo = [['X','♣','♠'],['O','♦','♥']]//Criação dos simbolos qu
 const currentPlayer = document.querySelector(".currentPlayer");
 
 // Não conseguimos transformar nosso código por completo em funcional,
-// e por isso precisamos manter variaveis como(a matriz, o atual simbolo dos jogadores, o atual jogador da vez e o contador.)
+// e por isso precisamos manter variaveis como: 
+// a matriz, o atual simbolo dos jogadores, o atual jogador da vez e o contador.
+// Tentamos englobar as funções e passar os parametros por uma função geral, mas tivemos erros na chamada recursiva,
+// ao chamarmos a função newmove tivemos uma dificuldade devido as variaveis não estarem sendo acessadas por ela ao chamarmos somente a neew move
+// então criamos uma condicional que quando ela fosse verdadeira o retorno seria a função newmmove com as variaveis necessárias para a utilização da função,
+// mas mesmo "corrigindo" esse erro, o funcionamento da função parou, e então optamos por deixar as partes que não conseguimos deixar dentro do paradigma funcional. 
 
-let matriz;
+let matriz;// Inicia a matriz que será preenchida com os simbolos, e esta será utilizada como o parametro para a função verificarMatriz
 let player1 = simbolo[0][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player1
 let player2= simbolo[1][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player2
 let player=player1; // O primeiro a jogar será o player1
@@ -61,7 +66,7 @@ function newMove(e) {
   contador=contador+1;
   if(contador%4 == 0){player1 = simbolo[0][Math.floor(Math.random()*3)];//na 4ª partida, troca o símbolo do player 1
                       player = player1;}else{
-    if((contador-1)%4 == 0){player2 = simbolo[1][Math.floor(Math.random()*3)]//na 5ª partida, troca o símbolo do player 1
+    if((contador-1)%4 == 0){player2 = simbolo[1][Math.floor(Math.random()*3)]//na 5ª partida, troca o símbolo do player 2
                             player = player2;}else{
        if(contador%2 == 0){player = player1;}else{//se a jogada for par, quem joga é o player 1
          if(contador%2 == 1){player = player2;}//se a jogada for impar, quem joga é o player 2
@@ -69,7 +74,6 @@ function newMove(e) {
                               
                             }
   }
-  //player = simbolo[contador%2][Math.floor(Math.random()*3)];
   currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
 }
 
