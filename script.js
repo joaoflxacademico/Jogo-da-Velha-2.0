@@ -14,7 +14,7 @@ const currentPlayer = document.querySelector(".currentPlayer");
 
 let matriz;// Inicia a matriz que será preenchida com os simbolos, e esta será utilizada como o parametro para a função verificarMatriz
 let player1 = simbolo[0][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player1
-let player2= simbolo[1][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player2
+let player2 = simbolo[1][Math.floor(Math.random()*3)];//inicia um símbolo aleatório para o player2
 let player=player1; // O primeiro a jogar será o player1
 let contador = 0 
 // Criar uma matriz vazia 7x7
@@ -34,8 +34,8 @@ console.log(matriz)
 
   const buttons = Array.from(document.querySelectorAll('.cell button'));
   buttons.map((item) =>{
-    item.innerHTML= ""// Transforma todos os textos dos botões em vazios 
-    item.addEventListener("click", newMove)})// Adiciona a ação de clique em cada botão da matriz
+    item.innerHTML= ""
+    item.addEventListener("click", newMove)})
   }
 init();
 
@@ -122,4 +122,12 @@ function verificarMatriz(matriz) {
 }
 function instrucoes(){
   alert("1-Cada jogador tem 3 símbolos.\n2-Os símbolos são alterados a cada duas rodadas.\n3-Vence quem possuir 4 símbolos iguais em qualquer direção")
+}
+
+function novojogo(){//começa um novo jogo com novos simbolos e o contador e botões zerados
+  contador=0
+let player1 = simbolo[0][Math.floor(Math.random()*3)]
+let player2 = simbolo[1][Math.floor(Math.random()*3)]
+  player=player1
+  init()
 }
