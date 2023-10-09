@@ -126,8 +126,8 @@ function instrucoes(){
 
 function novojogo(){//começa um novo jogo com novos simbolos e o contador e botões zerados
   contador=0
-let player1 = simbolo[0][Math.floor(Math.random()*3)]
-let player2 = simbolo[1][Math.floor(Math.random()*3)]
+player1 = simbolo[0][Math.floor(Math.random()*3)]
+player2 = simbolo[1][Math.floor(Math.random()*3)]
   player=player1
   init()
 }
